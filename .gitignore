@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/frontend_react/node_modules
+/frontend_react/.env
+/frontend_react/.next
+
