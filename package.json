@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build:studio": "cd backend_sanity && npx @sanity/cli build ./dist --base /studio && rm -rf ../frontend_react/public/studio && cp -r ./dist ../frontend_react/public/studio",
+    "build:frontend": "cd frontend_react && npm run build",
+    "build:all": "npm run build:studio && npm run build:frontend"
+  }
+}
