@@ -30,12 +30,11 @@ const Skills = () => {
 							whileInView={{ opacity: [0, 1] }}
 							transition={{ duration: 0.5 }}
 							className='app__skills-item app__flex'
-							key={skill.name}
-						>
+							key={skill.name}>
 							<div className='app__flex' style={{ backgroundColor: skill.bgColor }}>
 								<img src={urlFor(skill.icon)} alt={skill.name} />
 							</div>
-							<p className='p-text'>{skill.name}</p>
+							<p className='p-text-small'>{skill.name}</p>
 						</motion.div>
 					))}
 				</motion.div>
@@ -54,19 +53,11 @@ const Skills = () => {
 											transition={{ duration: 0.5 }}
 											className='app__skills-exp-work '
 											data-tip
-											data-for={work.name}
-										>
+											data-for={work.name}>
 											<h4 className='bold-text'>{work.name}</h4>
 											<p className='p-text'>{work.company}</p>
+											<p className='p-text'>{work.desc}</p>
 										</motion.div>
-										<ReactTooltip
-											id={work.name}
-											effect='solid'
-											arrowColor='#fff'
-											className='skills-tooltip'
-										>
-											{work.desc}
-										</ReactTooltip>
 									</div>
 								))}
 							</motion.div>

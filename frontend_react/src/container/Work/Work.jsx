@@ -64,14 +64,13 @@ const Work = () => {
 				My <span>Portfolio </span>Section
 			</h2>
 			<div className='app__work-filter'>
-				{['Redux', 'Node JS', 'Material-UI', 'React JS', 'All'].map((item, index) => (
+				{['Zustand', 'Material-UI', 'React', 'WordPress', 'All'].map((item, index) => (
 					<div
 						key={index}
 						className={`app__work-filter-item app__flex p-text ${
 							activeFilter === item ? 'item-active' : ''
 						}`}
-						onClick={() => handleWorkFilter(item)}
-					>
+						onClick={() => handleWorkFilter(item)}>
 						{item}
 					</div>
 				))}
@@ -79,8 +78,7 @@ const Work = () => {
 			<motion.div
 				animate={animateCard}
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
-				className='app__work-portfolio'
-			>
+				className='app__work-portfolio'>
 				{filterWork.map((work, index) => (
 					<div className='app__work-item app__flex' key={index}>
 						<div className='app__work-img app__flex'>
@@ -95,8 +93,7 @@ const Work = () => {
 									ease: 'easeInOut',
 									staggerChildren: 0.5,
 								}}
-								className='app__work-hover app__flex'
-							>
+								className='app__work-hover app__flex'>
 								<a href={work.projectLink} target='_blank' rel='noreferrer'>
 									<motion.div
 										whileInView={{ scale: [0, 1] }}
@@ -104,8 +101,7 @@ const Work = () => {
 										transition={{
 											duration: 0.25,
 										}}
-										className=' app__flex'
-									>
+										className=' app__flex'>
 										<AiFillEye />
 									</motion.div>
 								</a>
@@ -116,8 +112,7 @@ const Work = () => {
 										transition={{
 											duration: 0.25,
 										}}
-										className=' app__flex'
-									>
+										className=' app__flex'>
 										<AiFillGithub />
 									</motion.div>
 								</a>

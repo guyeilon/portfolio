@@ -135,15 +135,14 @@
 .app__footer-links {
 	display: flex;
 	flex-wrap: wrap;
-	// justify-content: flex-end;
+
 	align-items: center;
-	// flex-direction: column;
 
 	padding: 1rem;
 
 	div {
-		width: 40px;
-		height: 40px;
+		width: 45px;
+		height: 45px;
 		border-radius: 50%;
 		background-color: var(--white-color);
 		margin: 0.25rem 0;
@@ -155,10 +154,14 @@
 		align-items: center;
 
 		transition: all 0.3s ease-in-out;
+		a {
+			display: grid;
+			place-items: center;
+		}
 
 		svg {
-			width: 15px;
-			height: 15px;
+			width: 18px;
+			height: 18px;
 			color: var(--gray-color);
 		}
 	}

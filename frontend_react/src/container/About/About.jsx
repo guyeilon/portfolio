@@ -16,9 +16,9 @@ const About = () => {
 	return (
 		<>
 			<h2 className='head-text'>
-				I have <span>true passion</span>
+				Building <span>Modern</span>, User-Friendly <span>Web Applications</span>
 				<br />
-				for developing <span>winning websites</span>
+				with <span>Passion</span> and <span>Precision</span>
 			</h2>
 
 			<div className='app__profiles'>
@@ -28,8 +28,7 @@ const About = () => {
 						whileHover={{ scale: 1.1 }}
 						transition={{ duration: 0.5, type: 'tween' }}
 						className='app__profile-item'
-						key={about.title + index}
-					>
+						key={about.title + index}>
 						<img src={urlFor(about.imgUrl)} alt={about.title} />
 						<h2 className='bold-text' style={{ marginTop: 20 }}>
 							{about.title}

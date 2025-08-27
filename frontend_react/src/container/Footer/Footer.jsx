@@ -58,50 +58,30 @@ const Footer = () => {
 
 			<div className='app__footer-cards'>
 				<div className='app__footer-card '>
-					<a
-						href='mailto:guyelon@gmail.com'
-						target='_blank'
-						rel='noreferrer'
-						className='p-text'
-					>
+					<a href='mailto:guyelon@gmail.com' target='_blank' rel='noreferrer' className='p-text'>
 						<MdOutlineEmail />
 						guyelon@gmail.com
 					</a>
 				</div>
-				<div className='app__footer-card '>
-					<a
-						href='https://m.me/guy.eilon'
-						target='_blank'
-						rel='noreferrer'
-						className='p-text'
-					>
-						<RiMessengerLine />
-						Facebook messenger
-					</a>
-				</div>
+
 				<div className='app__footer-card'>
 					<a
 						href='https://api.whatsapp.com/send?phone=972527255511'
 						target='_blank'
 						rel='noreferrer'
-						className='p-text'
-					>
+						className='p-text'>
 						<BsWhatsapp />
 						+972527255511
 					</a>
 				</div>
 			</div>
 			{!isFormSubmitted ? (
-				<form
-					className='app__footer-form app__flex'
-					ref={form}
-					onSubmit={e => handleSubmit(e)}
-				>
+				<form className='app__footer-form app__flex' ref={form} onSubmit={e => handleSubmit(e)}>
 					<div className='app__flex'>
 						<input
 							className='p-text'
 							type='text'
-							placeholder='Your Name'
+							placeholder='Name'
 							name='name'
 							value={name}
 							onChange={handleChangeInput}
@@ -112,7 +92,7 @@ const Footer = () => {
 						<input
 							className='p-text'
 							type='email'
-							placeholder='Your Email'
+							placeholder='Email'
 							name='email'
 							value={email}
 							onChange={handleChangeInput}
@@ -122,7 +102,7 @@ const Footer = () => {
 					<div>
 						<textarea
 							className='p-text'
-							placeholder='Your Message'
+							placeholder='Message'
 							value={message}
 							name='message'
 							onChange={handleChangeInput}
@@ -146,25 +126,11 @@ const Footer = () => {
 					</a>
 				</div>
 				<div>
-					<a
-						href={'https://www.linkedin.com/in/guy-eilon/'}
-						target='_blank'
-						rel='noreferrer'
-					>
+					<a href={'https://www.linkedin.com/in/guy-eilon/'} target='_blank' rel='noreferrer'>
 						<FaLinkedin />
 					</a>
 				</div>
-				{/* <div>
-				<a href={'https://www.instagram.com/geilon66/'} target='_blank' rel='noreferrer'>
-					<BsInstagram />
-				</a>
-			</div> */}
 
-				<div>
-					<a href={'https://www.facebook.com/guy.eilon'} target='_blank' rel='noreferrer'>
-						<FaFacebook />
-					</a>
-				</div>
 				<div>
 					<a href={'https://github.com/guyeilon'} target='_blank' rel='noreferrer'>
 						<FaGithub />

@@ -23,20 +23,18 @@ function Header() {
 			<motion.div
 				whileInView={{ x: [-100, 0], opacity: [0, 1] }}
 				transition={{ duration: 0.5 }}
-				className='app__header-info'
-			>
+				className='app__header-info'>
 				<div className='app__header-badge'>
 					<div className='badge-cmp app__flex'>
-						{/* <span>👋</span> */}
-						<div style={{ marginLeft: 20 }}>
-							<p className='p-text'>Hello, I am </p>
+						<div>
+							<p className='p-text'>Hi, I'm</p>
 							<h1 className='head-text'>Guy</h1>
 						</div>
 					</div>
 
 					<div className='tag-cmp app__flex'>
-						<p className='p-text'>Frontend developer</p>
-						<p className='p-text'>Full-stack </p>
+						<p className='p-text'>Frontend Developer</p>
+						<p className='p-text'>React | Typescript </p>
 					</div>
 				</div>
 			</motion.div>
@@ -44,8 +42,7 @@ function Header() {
 			<motion.div
 				whileInView={{ opacity: [0, 1] }}
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
-				className='app__header-img'
-			>
+				className='app__header-img'>
 				<img className='profile' src={images.profile} alt='profile_bg' />
 				<motion.img
 					whileInView={{ scale: [0, 1] }}
@@ -56,14 +53,10 @@ function Header() {
 				/>
 			</motion.div>
 
-			<motion.div
-				variants={scaleVariants}
-				whileInView={scaleVariants.whileInView}
-				className='app__header-circle'
-			>
-				{[images.sass, images.react, images.redux].map((circle, index) => (
+			<motion.div variants={scaleVariants} whileInView={scaleVariants.whileInView} className='app__header-circle'>
+				{[images.typescript, images.react, images.css].map((circle, index) => (
 					<div className='circle-cmp app__flex' key={`circle-${index}`}>
-						<img src={circle} clt='circle' />
+						<img src={circle} alt='circle' />
 					</div>
 				))}
 			</motion.div>
