@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"build:studio": "cd backend_sanity && npm run build -- --output ../frontend_react/public/studio --base /studio",
-		"build:frontend": "cd frontend_react && npm install && npm run build",
+		"build:studio": "cd backend_sanity && npx sanity@2.35.0 build ./dist --base /studio && rm -rf ../frontend_react/public/studio && cp -r ./dist ../frontend_react/public/studio",
+		"build:frontend": "cd frontend_react && npm run build",
 		"build:all": "npm run build:studio && npm run build:frontend"
 	}
 }
