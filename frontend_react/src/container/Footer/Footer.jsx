@@ -108,7 +108,7 @@ const Footer = () => {
 				</form>
 			) : (
 				<div>
-					<h3 className='head-text'>Thank you for getting in touch!</h3>
+					<h3 className='head-text'>Thanks for reaching out! I’ll get back to you soon.</h3>
 				</div>
 			)}
 
