@@ -28,3 +28,4 @@ yarn-error.log*
 /frontend_react/.next
 
 /backend_sanity/node_modules
+/backend_sanity/dist
