@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { About, Header, Footer, Skills, Testimonial, Work } from './container';
-import { Navbar, SocialMedia } from './components';
+import { About, Header, Footer, Skills, Work } from './container';
+import { Navbar } from './components';
 import './App.scss';
 
 function App() {

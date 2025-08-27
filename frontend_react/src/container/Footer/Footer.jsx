@@ -1,12 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 
 import { MdOutlineEmail } from 'react-icons/md';
 import { BsWhatsapp } from 'react-icons/bs';
-import { RiMessengerLine } from 'react-icons/ri';
-import { BsInstagram } from 'react-icons/bs';
 import { ImProfile } from 'react-icons/im';
-import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { images } from '../../constants';
@@ -15,24 +13,11 @@ import './Footer.scss';
 
 const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
-const USER_ID = process.env.REACT_APP_USER_ID;
+const PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY;
+
+console.log('PUBLIC_KEY =', PUBLIC_KEY);
 
 const Footer = () => {
-	const form = useRef();
-
-	const sendEmail = e => {
-		e.preventDefault();
-
-		emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, USER_ID).then(
-			result => {
-				console.log(result.text);
-			},
-			error => {
-				console.log(error.text);
-			}
-		);
-	};
-
 	const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -41,15 +26,23 @@ const Footer = () => {
 
 	const handleChangeInput = e => {
 		const { name, value } = e.target;
-		setFormData({ ...formData, [name]: value });
+		setFormData(prev => ({ ...prev, [name]: value }));
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
 		setLoading(true);
-		sendEmail(e);
-		setLoading(false);
-		setIsFormSubmitted(true);
+
+		emailjs
+			.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+			.then(() => {
+				setLoading(false);
+				setIsFormSubmitted(true);
+			})
+			.catch(error => {
+				console.error('EmailJS error:', error);
+				setLoading(false);
+			});
 	};
 
 	return (
@@ -75,8 +68,9 @@ const Footer = () => {
 					</a>
 				</div>
 			</div>
+
 			{!isFormSubmitted ? (
-				<form className='app__footer-form app__flex' ref={form} onSubmit={e => handleSubmit(e)}>
+				<form className='app__footer-form app__flex' onSubmit={handleSubmit}>
 					<div className='app__flex'>
 						<input
 							className='p-text'
@@ -110,8 +104,8 @@ const Footer = () => {
 							rows='7'
 						/>
 					</div>
-					<button type='submit' className='p-text'>
-						{!loading ? 'Send Message' : 'Sending...'}
+					<button type='submit' className='p-text' disabled={loading}>
+						{loading ? 'Sending...' : 'Send Message'}
 					</button>
 				</form>
 			) : (
@@ -119,6 +113,7 @@ const Footer = () => {
 					<h3 className='head-text'>Thank you for getting in touch!</h3>
 				</div>
 			)}
+
 			<div className='app__footer-links'>
 				<div>
 					<a href={images.CV} download>
@@ -126,13 +121,12 @@ const Footer = () => {
 					</a>
 				</div>
 				<div>
-					<a href={'https://www.linkedin.com/in/guy-eilon/'} target='_blank' rel='noreferrer'>
+					<a href='https://www.linkedin.com/in/guy-eilon/' target='_blank' rel='noreferrer'>
 						<FaLinkedin />
 					</a>
 				</div>
-
 				<div>
-					<a href={'https://github.com/guyeilon'} target='_blank' rel='noreferrer'>
+					<a href='https://github.com/guyeilon' target='_blank' rel='noreferrer'>
 						<FaGithub />
 					</a>
 				</div>
