@@ -1,6 +1,6 @@
+/* ---------- NAVBAR BASE ---------- */
 .app__navbar {
 	width: 100%;
-
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -8,12 +8,16 @@
 	padding: 1rem 2rem;
 	background: rgba(255, 255, 255, 0.25);
 	backdrop-filter: blur(4px);
-	--webkit-backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
 	border: 1px solid rgba(255, 255, 255, 0.18);
+
 	position: fixed;
-	z-index: 2;
+	top: 0;
+	left: 0;
+	z-index: 100;
 }
 
+/* ---------- LOGO ---------- */
 .app__navbar-logo {
 	display: flex;
 	justify-content: flex-start;
@@ -30,66 +34,77 @@
 	}
 }
 
+/* ---------- DESKTOP LINKS ---------- */
 .app__navbar-links {
 	flex: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 	list-style: none;
 
 	li {
 		margin: 0 1rem;
 		cursor: pointer;
-
+		display: flex;
 		flex-direction: column;
+		align-items: center;
 
 		div {
 			width: 5px;
 			height: 5px;
 			background: transparent;
 			border-radius: 50px;
-
 			margin-bottom: 5px;
-		}
-
-		a {
-			color: var(--gray--color);
-			text-decoration: none;
-			flex-direction: column;
-
-			text-transform: uppercase;
-			font-weight: 500;
-
-			transition: all 0.3s ease-in-out;
-
-			&:hover {
-				color: var(--secondary-color);
-			}
-		}
-
-		&:hover {
-			div {
-				background: var(--secondary-color);
-			}
+			transition: background 0.3s ease-in-out;
 		}
 	}
 
-	@media screen and(max-width:900px) {
+	@media screen and (max-width: 900px) {
 		display: none;
 	}
 }
 
+/* Shared link styles (desktop + mobile) */
+.app__navbar-links a,
+.menu-panel ul li a {
+	color: var(--gray-color);
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 500;
+	transition: all 0.3s ease-in-out;
+
+	&:hover,
+	&:focus-visible {
+		color: var(--secondary-color);
+		outline: none;
+	}
+}
+
+.app__navbar-links li:hover div {
+	background: var(--secondary-color);
+}
+
+/* ---------- BURGER MENU (MOBILE BUTTON) ---------- */
 .app__navbar-menu {
-	width: 35px;
-	height: 35px;
+	width: 2.2rem;
+	height: 2.2rem;
 	border-radius: 50%;
-	position: relative;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background: var(--secondary-color);
+
+	button {
+		background: none;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
 	svg {
 		width: 75%;
@@ -97,72 +112,98 @@
 		color: var(--white-color);
 	}
 
-	div {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		z-index: 5;
+	@media screen and (min-width: 900px) {
+		display: none;
+	}
+}
 
-		padding: 1rem;
+/* ---------- SLIDE-IN MENU PANEL ---------- */
+.menu-panel {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 200;
 
-		width: 80%;
-		height: 100vh;
+	padding: 1rem;
+	width: 80%;
+	height: 100vh;
 
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+
+	background: url('../../assets/bgWhite.png');
+	background-color: var(--white-color);
+	background-size: cover;
+	background-repeat: repeat;
+
+	box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+
+	/* -------- TOP CONTENT: close + links -------- */
+	.menu-content {
+		flex: 1;
 		display: flex;
-		justify-content: flex-end;
-		align-items: flex-end;
 		flex-direction: column;
+		align-items: flex-start;
+	}
 
-		background: url('../../assets/bgWhite.png');
-		background-color: var(--white-color);
-		background-size: cover;
-		background-repeat: repeat;
-
-		box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+	.menu-content button {
+		align-self: flex-end;
+		margin: 1rem;
+		width: 2.2rem;
+		height: 2.2rem;
+		background: none;
+		border: none;
+		cursor: pointer;
 
 		svg {
-			width: 35px;
-			height: 35px;
-			color: var(--secondary-color);
-			margin: 0.5rem 1rem;
-		}
-
-		ul {
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			height: 100%;
 			width: 100%;
+			height: 100%;
+			color: var(--secondary-color);
+		}
+	}
 
+	.menu-content ul {
+		list-style: none;
+		margin: 1rem 0;
+		padding: 0;
+		width: 100%;
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		li {
+			margin: 1rem;
+		}
+	}
+
+	/* -------- BOTTOM CONTENT: socials -------- */
+	.menu-social {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		padding: 1.5rem 0;
+		border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+		.app__social {
 			display: flex;
-			justify-content: flex-start;
-			align-items: flex-start;
-			flex-direction: column;
+			flex-direction: row;
+			gap: 1.5rem;
 
-			li {
-				margin: 1rem;
+			a {
+				color: var(--gray-color);
+				font-size: 1.5rem;
+				transition: color 0.3s ease;
 
-				a {
-					color: var(--gray--color);
-					text-decoration: none;
-					font-size: 1rem;
-					text-transform: uppercase;
-					font-weight: 500;
-
-					transition: all 0.3s ease-in-out;
-
-					&:hover {
-						color: var(--secondary-color);
-					}
+				&:hover {
+					color: var(--secondary-color);
 				}
 			}
 		}
-
-		@media screen and (min-width: 900px) {
-			display: none;
-		}
 	}
+
 	@media screen and (min-width: 900px) {
 		display: none;
 	}
