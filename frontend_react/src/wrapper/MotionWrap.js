@@ -1,16 +1,20 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MotionWrap = (Component, className) =>
 	function HOC() {
 		return (
-			<motion.div
-				whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
-				transition={{ duration: 0.5 }}
-				className={`${className} app__flex`}
-			>
-				<Component />
-			</motion.div>
+			<AnimatePresence mode='wait'>
+				<motion.div
+					key='motion-wrapper'
+					initial={{ y: 100, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					exit={{ y: -50, opacity: 0 }}
+					transition={{ duration: 0.5 }}
+					className={`${className || ''} app__flex`}>
+					<Component />
+				</motion.div>
+			</AnimatePresence>
 		);
 	};
 

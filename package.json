@@ -5,7 +5,8 @@
 	"scripts": {
 		"build": "npm run build:frontend",
 		"build:frontend": "cd frontend_react && npm install && npm run build",
-		"deploy": "cd frontend_react && npm run deploy"
+		"deploy": "cd frontend_react && npm run deploy",
+		"start:front": "cd frontend_react && npm run start"
 	},
 	"devDependencies": {
 		"gh-pages": "^6.3.0"

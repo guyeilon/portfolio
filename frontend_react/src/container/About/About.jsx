@@ -24,11 +24,13 @@ const About = () => {
 			<div className='app__profiles'>
 				{abouts.map((about, index) => (
 					<motion.div
-						whileInView={{ opacity: 1 }}
-						whileHover={{ scale: 1.1 }}
+						key={about.title + index}
+						initial={{ opacity: 0, y: 50 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						whileHover={{ scale: 1.05 }}
+						viewport={{ once: true }} // 👈 ensures animation runs only once
 						transition={{ duration: 0.5, type: 'tween' }}
-						className='app__profile-item'
-						key={about.title + index}>
+						className='app__profile-item'>
 						<img src={urlFor(about.imgUrl)} alt={about.title} />
 						<h2 className='bold-text' style={{ marginTop: 20 }}>
 							{about.title}
